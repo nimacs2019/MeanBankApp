@@ -1,0 +1,20 @@
+    <div class="container">
+        <h1 class="text-center mt-5 mb-5">Transaction history</h1>
+            <table class="table border">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Type of transactions</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let tran of transaction; let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{tran.type}}</td>
+                    <td>{{tran.amount}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <a style="margin-left: 600px;" href="/dashboard">Home</a>
+    </div>

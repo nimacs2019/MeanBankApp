@@ -1,0 +1,90 @@
+
+<!-- nav bar -->
+<ul class="nav justify-content-end">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="/transactions">transaction History</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link btn" (click)="delete()">Delete account</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link btn" (click)="logout()">sign Out</a>
+    </li>
+  </ul>
+
+
+
+<h1 class=" mt-5 text-center text-primary"> Welcome {{user}}</h1>
+<!-- delete child selector -->
+<app-deleteconform (onDelete)="ondelete($event)" (onCancel)="cancel()" [item]="acno"></app-deleteconform>
+<div [ngClass]="acno? 'cc' : '' " class="container">
+    <div class="row">
+        <div class="col-6">
+            <!-- deposite form -->
+            <form (ngSubmit)="deposite()" [formGroup]="depositeForm" class="form-control border-dark mt-5 p-5">
+                <h3 class="text-center">Deposite Form</h3>
+                <!-- Account number -->
+                <div class="mb-2">
+                    <label for="">Account Number</label>
+                    <input name="acno" formControlName="acno" type="text" class="form-control" placeholder="ac_no">
+                </div>
+                <div style="color: red" *ngIf="this.depositeForm.get('acno')?.errors&&this.depositeForm.get('acno')?.touched;">
+                    Invalid Account Number
+                </div>
+                <!-- password -->
+                <div class="mb-2">
+                    <label for="">password</label>
+                    <input name="pswd" formControlName="pswd" type="text" class="form-control" placeholder="password">
+                </div>
+                <div style="color: red" *ngIf="this.depositeForm.get('pswd')?.errors&&this.depositeForm.get('pswd')?.touched;">
+                    Invalid password
+                </div>
+                <!-- amount -->
+                <div class="mb-2">
+                    <label for="">Amount</label>
+                    <input name="amount" formControlName="amount" type="text" class="form-control" placeholder="amount">
+                </div>
+                <div style="color: red" *ngIf="this.depositeForm.get('amount')?.errors&&this.depositeForm.get('amount')?.touched;">
+                    Invalid amount
+                </div>
+                <div class="mt-4 mb-2">
+                    <button type="submit" class="btn btn-primary" style="float:inline-start">Deposite</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-6">
+            <!-- withdrawel form -->
+            <form (ngSubmit)="withdraw()" [formGroup]="withdrawalForm" class="form-control  border-dark mt-5 p-5">
+                <h3 class="text-center">Withdrawel Form</h3>
+                <!-- Account number -->
+                <div class="mb-2">
+                    <label for="">Account Number</label>
+                    <input name="acno" formControlName="acno" type="text" class="form-control" placeholder="ac_no">
+                </div>
+                <div style="color: red" *ngIf="this.withdrawalForm.get('acno')?.errors&&this.withdrawalForm.get('acno')?.touched;">
+                    Invalid Account Number
+                </div>
+                <!-- password -->
+                <div class="mb-2">
+                    <label for="">password</label>
+                    <input name="pswd" formControlName="pswd" type="text" class="form-control" placeholder="password">
+                </div>
+                <div style="color: red" *ngIf="this.withdrawalForm.get('pswd')?.errors&&this.withdrawalForm.get('pswd')?.touched;">
+                    Invalid password
+                </div>
+                <!-- amount -->
+                <div class="mb-2">
+                    <label for="">Amount</label>
+                    <input name="amount" formControlName="amount" type="text" class="form-control" placeholder="amount">
+                </div>
+                <div style="color: red" *ngIf="this.withdrawalForm.get('amount')?.errors&&this.withdrawalForm.get('amount')?.touched;">
+                    Invalid amount
+                </div>
+                <div class="mt-4 mb-2">
+                    <button type="submit" class="btn btn-primary " style="float:inline-start">withdraw</button>
+                </div>
+                <div></div>
+            </form>
+        </div>
+    </div>
+</div>
